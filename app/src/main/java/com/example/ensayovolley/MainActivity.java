@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
                     Log.d(TAG, "*** Error leyendo respuesta del servicio web ***");
                     e.printStackTrace();
                 }
-                NoticiaAdapter noticiaAdapter = new NoticiaAdapter(listaDeNoticias);
+                NoticiaAdapter noticiaAdapter = new NoticiaAdapter(listaDeNoticias, MainActivity.this);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerViewNoticias.setLayoutManager(layoutManager);
                 recyclerViewNoticias.setAdapter(noticiaAdapter);
@@ -81,6 +82,6 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
 
     @Override
     public void recyclerViewClick(Object object) {
-
+        Toast.makeText(this, ((Noticia)object).getTitulo(), Toast.LENGTH_LONG).show();
     }
 }

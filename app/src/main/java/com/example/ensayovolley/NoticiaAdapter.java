@@ -15,8 +15,9 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
     private List<Noticia> listaDeNoticias;
     private AvisoRecyclerView listener;
 
-    public NoticiaAdapter(List<Noticia> listaDeNoticias) {
+    public NoticiaAdapter(List<Noticia> listaDeNoticias, AvisoRecyclerView listener) {
         this.listaDeNoticias = listaDeNoticias;
+        this.listener = listener;
     }
 
     @NonNull
@@ -65,7 +66,6 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
             textViewDescripcion.setText(unaNoticia.getDescripcion());
             textViewAutor.setText(unaNoticia.getAutor());
         }
-
     }
 }
 
