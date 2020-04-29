@@ -4,27 +4,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.ensayovolley.APINoticias.BuscarNoticias;
+import com.example.ensayovolley.APINoticias.RecepcionNoticias;
+import com.example.ensayovolley.RecyclerView.AvisoRecyclerView;
+import com.example.ensayovolley.RecyclerView.Noticia;
+import com.example.ensayovolley.RecyclerView.NoticiaAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements AvisoRecyclerView, RecepcionNoticias {
 
@@ -44,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
 
         buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA, BuscarNoticias.KEY_TEMA_DEPORTES);
 
+
+
+
+
         // Ejemplos
         // buscarNoticias.porTema("Coronavirus");
         // buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA);
@@ -61,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
                 String noticiaAutor = jsonNoticia.getString("author");
                 String noticiaFuente = jsonFuente.getString("name");
                 String noticiaDescripcion = jsonNoticia.getString("description");
-                Noticia noticia = new Noticia(noticiaFuente, noticiaAutor, noticiaTitulo, noticiaDescripcion, new Date());
+                String urlNoticia = jsonNoticia.getString("url");
+                String urlToImage = jsonNoticia.getString("urlToImage");
+                Noticia noticia = new Noticia(noticiaFuente, noticiaAutor, noticiaTitulo, noticiaDescripcion, urlNoticia, urlToImage, new Date());
                 listaDeNoticias.add(noticia);
             }
         } catch (JSONException e) {
@@ -74,11 +83,12 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
         recyclerViewNoticias.setAdapter(noticiaAdapter);
     }
 
-
     @Override
     public void recyclerViewClick(Object object) {
         if (object instanceof Noticia) {
-            Toast.makeText(this, ((Noticia) object).getTitulo(), Toast.LENGTH_LONG).show();
+            String descripcion = ((Noticia) object).getDescripcion();
+            String sSubCadena = descripcion.substring(descripcion.length()/2,descripcion.length());
+            Toast.makeText(this, descripcion, Toast.LENGTH_LONG).show();
         }
     }
 

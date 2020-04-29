@@ -1,4 +1,4 @@
-package com.example.ensayovolley;
+package com.example.ensayovolley.RecyclerView;
 
 public interface AvisoRecyclerView {
     void recyclerViewClick (Object object);

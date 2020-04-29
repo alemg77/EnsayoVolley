@@ -1,4 +1,4 @@
-package com.example.ensayovolley;
+package com.example.ensayovolley.APINoticias;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ensayovolley.APINoticias.RecepcionNoticias;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +38,7 @@ public class BuscarNoticias extends AppCompatActivity {
 
     private String TAG = getClass().toString();
 
-    private  RecepcionNoticias listener;
+    private RecepcionNoticias listener;
 
     public BuscarNoticias(RecepcionNoticias listener) {
         this.listener = listener;

@@ -1,12 +1,17 @@
-package com.example.ensayovolley;
+package com.example.ensayovolley.RecyclerView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ensayovolley.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,16 +46,14 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
     private class NoticiaViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewTitulo;
-        private TextView textViewDescripcion;
-        private TextView textViewAutor;
         private TextView textViewFuente;
+        private ImageView imageView;
 
         public NoticiaViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewAutor = itemView.findViewById(R.id.CeldaNoticiaAutor);
-            textViewDescripcion = itemView.findViewById(R.id.CeldaNoticiaDescripcion);
             textViewFuente = itemView.findViewById(R.id.CeldaNoticiaFuente);
             textViewTitulo = itemView.findViewById(R.id.CeldaNoticiaTitulo);
+            imageView = itemView.findViewById(R.id.CeldaNoticiaImagen);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,8 +66,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
         public void cargarNoticia(Noticia unaNoticia) {
             textViewTitulo.setText(unaNoticia.getTitulo());
             textViewFuente.setText(unaNoticia.getFuente());
-            textViewDescripcion.setText(unaNoticia.getDescripcion());
-            textViewAutor.setText(unaNoticia.getAutor());
+            Picasso.with((Context)listener).load(unaNoticia.getUrlImagen()).into(imageView);
         }
     }
 }
