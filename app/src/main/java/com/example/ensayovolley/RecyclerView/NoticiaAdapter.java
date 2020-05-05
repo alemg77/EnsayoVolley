@@ -51,7 +51,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
         private ImageView imageView;
         private ImageView logo;
 
-        public NoticiaViewHolder(@NonNull View itemView) {
+        private NoticiaViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitulo = itemView.findViewById(R.id.CeldaNoticiaTitulo);
             imageView = itemView.findViewById(R.id.CeldaNoticiaImagen);
@@ -65,7 +65,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
             });
         }
 
-        public void cargarNoticia(Noticia unaNoticia) {
+        private void cargarNoticia(Noticia unaNoticia) {
             String titulo = unaNoticia.getTitulo();
             if ( titulo.contains("-") ) {
                 textViewTitulo.setText(titulo.substring(0,titulo.indexOf("-")-1));
@@ -106,6 +106,14 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
 
                 case "Mdzol.com":
                     Picasso.with((Context)listener).load(R.drawable.logo_mdzol).into(logo);
+                    break;
+
+                case "Marca":
+                    Picasso.with((Context)listener).load(R.drawable.logo_marca).into(logo);
+                    break;
+
+                case "El Mundo":
+                    Picasso.with((Context)listener).load(R.drawable.logo_elmundo).into(logo);
                     break;
 
                 default:

@@ -58,10 +58,6 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
             }
         });
 
-        // Ejemplos
-        //
-        // buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA);
-
     }
 
     private void mostrarRespuesta(JSONObject jsonNoticias) {
@@ -94,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
     public void recyclerViewClick(Object object) {
         if (object instanceof Noticia) {
             String descripcion = ((Noticia) object).getDescripcion();
-            String sSubCadena = descripcion.substring(descripcion.length()/2,descripcion.length());
             Toast.makeText(this, descripcion, Toast.LENGTH_LONG).show();
         }
     }
