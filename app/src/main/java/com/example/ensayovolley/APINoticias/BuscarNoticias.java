@@ -52,6 +52,11 @@ public class BuscarNoticias extends AppCompatActivity {
         getRequest("https://newsapi.org/v2/everything?q=" + tema);
     }
 
+    public void porTemaEnEsp (String tema ){
+        getRequest("https://newsapi.org/v2/everything?domains=cnnespanol.cnn.com,elmundo.es,news.google.com,lagaceta.com.ar,lanacion.com.ar,marca.com&q="+tema);
+    }
+
+
     public void titularesNuevos(String pais, String tema) {
         getRequest("https://newsapi.org/v2/top-headlines?country="+pais+"&category="+tema);
     }

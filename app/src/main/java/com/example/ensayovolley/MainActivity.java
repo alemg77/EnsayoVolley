@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ensayovolley.APINoticias.BuscarNoticias;
@@ -34,22 +36,30 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
     private String TAG = getClass().toString();
     private List<Noticia> listaDeNoticias;
     private RecyclerView recyclerViewNoticias;
+    private EditText editTextBusqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerViewNoticias = findViewById(R.id.RecyclerViewNoticias);
+        editTextBusqueda = findViewById(R.id.editTextBusqueda);
 
         Log.d(TAG, "**************************** Inicio del programa *************************************");
 
-        BuscarNoticias buscarNoticias = new BuscarNoticias(MainActivity.this);
+        final BuscarNoticias buscarNoticias = new BuscarNoticias(MainActivity.this);
 
         buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA, BuscarNoticias.KEY_TEMA_DEPORTES);
 
+        editTextBusqueda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buscarNoticias.porTemaEnEsp(editTextBusqueda.getText().toString());
+            }
+        });
 
         // Ejemplos
-        // buscarNoticias.porTema("Coronavirus");
+        //
         // buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA);
 
     }
