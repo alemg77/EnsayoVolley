@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
         buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA, BuscarNoticias.KEY_TEMA_DEPORTES);
 
 
-
-
-
         // Ejemplos
         // buscarNoticias.porTema("Coronavirus");
         // buscarNoticias.titularesNuevos(BuscarNoticias.KEY_PAIS_ARGENTINA);

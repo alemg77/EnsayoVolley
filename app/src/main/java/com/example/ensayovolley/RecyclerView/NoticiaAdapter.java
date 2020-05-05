@@ -1,6 +1,7 @@
 package com.example.ensayovolley.RecyclerView;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
 
     private List<Noticia> listaDeNoticias;
     private AvisoRecyclerView listener;
+    private String TAG = getClass().toString();
 
     public NoticiaAdapter(List<Noticia> listaDeNoticias, AvisoRecyclerView listener) {
         this.listaDeNoticias = listaDeNoticias;
@@ -46,14 +48,14 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
     private class NoticiaViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewTitulo;
-        private TextView textViewFuente;
         private ImageView imageView;
+        private ImageView logo;
 
         public NoticiaViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewFuente = itemView.findViewById(R.id.CeldaNoticiaFuente);
             textViewTitulo = itemView.findViewById(R.id.CeldaNoticiaTitulo);
             imageView = itemView.findViewById(R.id.CeldaNoticiaImagen);
+            logo = itemView.findViewById(R.id.CeladaNoticiaimageViewLogo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,12 +66,53 @@ public class NoticiaAdapter extends RecyclerView.Adapter {
         }
 
         public void cargarNoticia(Noticia unaNoticia) {
-            textViewTitulo.setText(unaNoticia.getTitulo());
-            textViewFuente.setText(unaNoticia.getFuente());
+            String titulo = unaNoticia.getTitulo();
+            if ( titulo.contains("-") ) {
+                textViewTitulo.setText(titulo.substring(0,titulo.indexOf("-")-1));
+            } else {
+                textViewTitulo.setText(titulo);
+            }
             Picasso.with((Context)listener).load(unaNoticia.getUrlImagen()).into(imageView);
+
+            String fuente = unaNoticia.getFuente();
+            switch (fuente ) {
+                case "La Nacion":
+                    Picasso.with((Context)listener).load(R.drawable.logo_lanacion).into(logo);
+                    break;
+
+                case "Tntsports.com":
+                    Picasso.with((Context)listener).load(R.drawable.logo_tntsports).into(logo);
+                    break;
+
+                case "Clarin.com":
+                    Picasso.with((Context)listener).load(R.drawable.logo_clarin).into(logo);
+                    break;
+
+                case "Eldia.com":
+                    Picasso.with((Context)listener).load(R.drawable.logo_eldia).into(logo);
+                    break;
+
+                case "Infobae":
+                    Picasso.with((Context)listener).load(R.drawable.logo_infobae).into(logo);
+                    break;
+
+                case "Tycsports.com":
+                    Picasso.with((Context)listener).load(R.drawable.logo_tycsports).into(logo);
+                    break;
+
+                case "Ole.com.ar":
+                    Picasso.with((Context)listener).load(R.drawable.logo_ole).into(logo);
+                    break;
+
+                case "Mdzol.com":
+                    Picasso.with((Context)listener).load(R.drawable.logo_mdzol).into(logo);
+                    break;
+
+                default:
+                    Log.d(TAG,"****** FALTA AGREGAR EL LOGO DE:"+fuente+"*****************");
+                    break;
+            }
         }
     }
 }
-
-
 

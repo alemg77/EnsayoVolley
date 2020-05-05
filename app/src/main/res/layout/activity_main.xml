@@ -6,9 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/RecyclerViewNoticias"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    <View
+        android:id="@+id/ViewAux"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/celesteFondo"
+        />
+
+    <EditText
+        android:id="@+id/editTextBusqueda"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:background="@drawable/esquinas_redondeadas"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewAux"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewNoticias"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewAux" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

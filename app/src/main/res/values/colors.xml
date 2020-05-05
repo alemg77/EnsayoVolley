@@ -3,5 +3,6 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="RecyclerviewFondoNoticias">#3A3A3A</color>
+    <color name="RecyclerviewFondoNoticias">#C6C6C6</color>
+    <color name="celesteFondo">#00aae4</color>
 </resources>
