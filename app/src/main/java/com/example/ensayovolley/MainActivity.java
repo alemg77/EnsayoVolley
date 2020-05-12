@@ -38,6 +38,15 @@ public class MainActivity extends AppCompatActivity implements AvisoRecyclerView
     private RecyclerView recyclerViewNoticias;
     private EditText editTextBusqueda;
 
+    // TODO: Mas logos:
+    // Ambito.com
+    // ElTerritorio.com.ar
+    // Depo.com.ar
+    // Motorsport.com
+    // Rosario3.com
+    // Tn.com.ar
+    // Cadena3.com
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
